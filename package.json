@@ -18,8 +18,5 @@
     "eslint": "8.23.0",
     "eslint-config-next": "12.2.5",
     "standard": "17.0.0"
-  },
-  "eslintConfig": {
-    "extends": "./node_modules/standard/eslintrc.json"
   }
 }

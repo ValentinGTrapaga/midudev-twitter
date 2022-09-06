@@ -1,0 +1,40 @@
+.sectionDiv {
+    padding-top: 100px;
+}
+
+.container {
+    display: grid;
+    place-items: center;
+    height: 100vh;
+    width: 100%;
+}
+
+.headerDiv {
+    border-bottom: 1px solid #ccc;
+    height: 49px;
+    top: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding-left: 12px;
+    padding-top: 4px;
+}
+
+.navDiv {
+    border-top: 1px solid #ccc;
+    height: 49px;
+    position: fixed;
+    bottom: 0;
+}
+
+@media (min-width: 520px) {
+
+    /* Aca van las props para pc */
+    .container {
+        height: 100vh;
+        width: 520px;
+        border-radius: 10px;
+        position: relative;
+        width: 100vw;
+    }
+}

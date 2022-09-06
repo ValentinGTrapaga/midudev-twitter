@@ -4,10 +4,12 @@ import AppLayout from '../components/AppLayout'
 import Image from 'next/image'
 import Button from '../components/Button'
 import devterLogo from '../public/devter-logo.png'
+import Avatar from "../components/Avatar"
 
 import { loginWithGitHub, onAuthStateChange } from '../firebase/client'
 import { useEffect, useState } from 'react'
 import { mapUserFromFirebaseAuth } from './../utils/mapUserFromFirebase';
+
 
 export default function Home() {
   const [user, setUser] = useState(null)
@@ -19,7 +21,6 @@ export default function Home() {
   const handleClick = () => {
     loginWithGitHub()
       .then((user) => {
-        const { avatar, url, username } = mapUserFromFirebaseAuth(user)
         setUser(mapUserFromFirebaseAuth(user))
       })
       .catch((err) => {
@@ -56,17 +57,7 @@ export default function Home() {
               <Button onClick={handleClick}>Login with GitHub</Button>
             )}
             {user && user.avatar && (
-              <div className={styles.profileDiv}>
-                <Image
-                  className={styles.profileImg}
-                  src={user.avatar}
-                  alt={user.username}
-                  width={48}
-                  height={48}
-                layout={'fixed'}
-                />
-                <strong>{user.username}</strong>
-              </div>
+              <Avatar text={user.username} alt={user.username} src={user.avatar} />
             )}
           </div>
         </section>

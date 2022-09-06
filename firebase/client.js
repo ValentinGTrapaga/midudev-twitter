@@ -26,22 +26,21 @@ export const onAuthStateChange = (onChange) => {
 }
 
 export const loginWithGitHub = () => {
-    const githubProvider = new GithubAuthProvider()
-    return signInWithPopup(auth, githubProvider)
-      .catch((err) => {
-        console.log(err)
-      })
+  const githubProvider = new GithubAuthProvider()
+  return signInWithPopup(auth, githubProvider).catch((err) => {
+    console.log(err)
+  })
 }
 
 export const mapUserFromFirebaseAuth = (user) => {
-  console.log(user);
+  console.log(user)
   const { photoURL, email, reloadUserInfo } = user
   const { screenName } = reloadUserInfo
   const blog = `https://www.github.com/${screenName}`
   return {
     avatar: photoURL,
     username: screenName,
-    url: blog, 
+    url: blog,
     email
   }
 }
