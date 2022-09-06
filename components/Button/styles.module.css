@@ -1,0 +1,19 @@
+.button {
+    background: var(--black);
+    border: 0;
+    color: #fff;
+    border-radius: 9999px;
+    font-weight: 500;
+    font-size: 16px;
+    padding: 8px 24px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-family: 'Poppins', sans-serif;
+    transition: opacity .2s ease;
+}
+
+.button:hover {
+    opacity: .8;
+}

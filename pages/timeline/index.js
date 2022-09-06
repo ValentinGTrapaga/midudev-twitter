@@ -7,9 +7,7 @@ export default function Timeline({ userName }) {
     <div className={styles.container}>
       <AppLayout>
         <h1>This is the timeline of {userName}</h1>
-        <Link href='/'>
-          <a>Go home</a>
-        </Link>
+        <Link href='/'>Go home</Link>
       </AppLayout>
     </div>
   )

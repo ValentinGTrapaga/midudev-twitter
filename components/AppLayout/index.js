@@ -1,9 +1,10 @@
 import React from 'react'
+import styles from './styles.module.css'
 
 const AppLayout = ({ children }) => {
   return (
     <>
-      <main>{children}</main>
+      <main className={styles.main}>{children}</main>
     </>
   )
 }
