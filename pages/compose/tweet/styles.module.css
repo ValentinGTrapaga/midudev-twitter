@@ -1,0 +1,34 @@
+.container {
+    display: grid;
+    height: 100vh;
+    width: 100%;
+    overflow-y: scroll;
+    position: relative;
+    border-radius: 2px
+}
+
+.textareaDiv {
+    border: 0;
+    padding: 15px;
+    resize: none;
+    font-size: 21px;
+    width: 100%;
+    outline: 0;
+    min-height: 200px;
+}
+
+.buttonDiv {
+    padding: 15px;
+}
+
+@media (min-width: 520px) {
+
+    /* Aca van las props para pc */
+    .container {
+        height: 100vh;
+        margin: auto;
+        width: 520px;
+        border-radius: 10px;
+        width: 100vw;
+    }
+}

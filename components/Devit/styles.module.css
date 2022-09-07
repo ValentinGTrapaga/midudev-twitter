@@ -1,0 +1,32 @@
+.devitsDiv {
+    padding-top: 56px;
+    display: flex;
+    flex-direction: column;
+}
+
+.devitArticle {
+    padding: 10px 15px;
+    display: flex;
+    border-bottom: 2px solid #f1f3f5a9;
+}
+
+.devitArticle:last-child {
+    border-bottom: none;
+}
+
+.avatarDiv {
+    padding-right: 8px;
+    padding-top: 6px;
+}
+
+.devitMessage {
+    margin: 0;
+    line-height: 1.3125;
+    font-size: 0.8rem;
+}
+
+.dateSpan {
+    opacity: 0.4;
+    font-size: 12px;
+    font-weight: 400;
+}

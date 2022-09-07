@@ -14,6 +14,11 @@
     transition: opacity .2s ease;
 }
 
+.button[disabled] {
+    pointer-events: none;
+    opacity: 0.2
+}
+
 .button:hover {
     opacity: .8;
 }

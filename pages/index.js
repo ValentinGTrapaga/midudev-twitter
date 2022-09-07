@@ -1,31 +1,29 @@
-import Head from 'next/head'
 import styles from '../styles/Home.module.css'
+import devterLogo from '../public/devter-logo.png'
+
+import Head from 'next/head'
 import AppLayout from '../components/AppLayout'
 import Image from 'next/image'
 import Button from '../components/Button'
-import devterLogo from '../public/devter-logo.png'
-import Avatar from "../components/Avatar"
+import Avatar from '../components/Avatar'
+import { useRouter } from 'next/router'
 
-import { loginWithGitHub, onAuthStateChange } from '../firebase/client'
-import { useEffect, useState } from 'react'
-import { mapUserFromFirebaseAuth } from './../utils/mapUserFromFirebase';
-
+import { loginWithGitHub } from '../firebase/client'
+import { useEffect } from 'react'
+import useUser, { USER_STATES } from '../hooks/useUser'
 
 export default function Home() {
-  const [user, setUser] = useState(null)
+  const router = useRouter()
+  const user = useUser()
 
   useEffect(() => {
-    (onAuthStateChange(setUser))
-  }, [])
+    user && router.replace('/home')
+  }, [user])
 
   const handleClick = () => {
-    loginWithGitHub()
-      .then((user) => {
-        setUser(mapUserFromFirebaseAuth(user))
-      })
-      .catch((err) => {
-        console.log(err)
-      })
+    loginWithGitHub().catch((err) => {
+      console.log(err)
+    })
   }
   return (
     <div className={styles.container}>
@@ -57,8 +55,13 @@ export default function Home() {
               <Button onClick={handleClick}>Login with GitHub</Button>
             )}
             {user && user.avatar && (
-              <Avatar text={user.username} alt={user.username} src={user.avatar} />
+              <Avatar
+                text={user.username}
+                alt={user.username}
+                src={user.avatar}
+              />
             )}
+            {user === undefined && <span>Loading...</span>}
           </div>
         </section>
       </AppLayout>
