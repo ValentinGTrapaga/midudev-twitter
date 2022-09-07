@@ -11,7 +11,9 @@ import {
   addDoc,
   Timestamp,
   collection,
-  getDocs
+  getDocs,
+  orderBy,
+  query
 } from 'firebase/firestore'
 
 const firebaseConfig = {
@@ -73,19 +75,17 @@ export const addDevit = async ({ avatar, content, userId, username }) => {
 }
 
 export const fetchLatestDevits = async () => {
-  const querySnapshot = await getDocs(collection(db, 'jedweets'))
+  const q = query(collection(db, 'jedweets'), orderBy('createdAt', 'desc'))
+  const querySnapshot = await getDocs(q)
   return querySnapshot.docs.map((doc) => {
     const data = doc.data()
     const id = doc.id
     const { createdAt } = data
-    const intl = new Intl.DateTimeFormat('es-ES')
-    const normalizedCreatedAt = intl
-      .format(new Date(createdAt.seconds * 1000))
-      .toString()
+
     return {
       ...data,
       id,
-      createdAt: normalizedCreatedAt
+      createdAt: +createdAt.toDate()
     }
   })
 }

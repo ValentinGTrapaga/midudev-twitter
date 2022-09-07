@@ -3,6 +3,7 @@ import AppLayout from '../../../components/AppLayout'
 import Button from '../../../components/Button'
 import styles from './styles.module.css'
 import useUser from '../../../hooks/useUser'
+import Head from 'next/head'
 import { addDevit } from '../../../firebase/client'
 import { useRouter } from 'next/router'
 
@@ -48,8 +49,12 @@ const ComposeTweet = () => {
   return (
     <div className={styles.container}>
       <AppLayout>
+        <Head>
+          <title>Crear un Jedweet</title>
+        </Head>
         <form onSubmit={handleSubmit}>
           <textarea
+            autoFocus
             onChange={handleChange}
             placeholder='Que esta pasando?'
             className={styles.textareaDiv}

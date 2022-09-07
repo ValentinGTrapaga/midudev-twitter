@@ -1,9 +1,11 @@
 import React from 'react'
 import Avatar from '../Avatar'
 import styles from './styles.module.css'
+import { useTimeago } from '../../hooks/useTimeago'
 
 export const Devit = ({ avatar, username, message, id, createdAt }) => {
-  console.log(createdAt)
+  const timeago = useTimeago(createdAt)
+
   return (
     <article
       key={id}
@@ -16,7 +18,7 @@ export const Devit = ({ avatar, username, message, id, createdAt }) => {
       </div>
       <section>
         <strong>
-          {username} <span className={styles.dateSpan}> - {createdAt}</span>
+          {username} <span className={styles.dateSpan}> - {timeago}</span>
         </strong>
         <p className={styles.devitMessage}>{message}</p>
       </section>

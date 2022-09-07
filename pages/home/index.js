@@ -5,6 +5,11 @@ import { useState, useEffect } from 'react'
 import { Devit } from '../../components/Devit'
 import useUser from '../../hooks/useUser'
 import { fetchLatestDevits } from '../../firebase/client'
+import Link from 'next/link'
+import Create from './../../components/Icons/Create'
+import Home from './../../components/Icons/Home'
+import Search from './../../components/Icons/Search'
+import Head from 'next/head'
 
 const HomePage = () => {
   const [timeline, setTimeline] = useState([])
@@ -17,6 +22,9 @@ const HomePage = () => {
   return (
     <div className={styles.container}>
       <AppLayout>
+        <Head>
+          <title>Inicio / Jedweet</title>
+        </Head>
         <header className={styles.headerDiv}>
           <h1>Inicio</h1>
         </header>
@@ -32,7 +40,32 @@ const HomePage = () => {
             />
           ))}
         </section>
-        <nav className={styles.navDiv}></nav>
+        <nav className={styles.navDiv}>
+          <Link href='/home'>
+            <Home
+              className={styles.navLink}
+              stroke='#09f'
+              width={32}
+              height={32}
+            />
+          </Link>
+          <Link href='/compose/tweet'>
+            <Search
+              className={styles.navLink}
+              stroke='#09f'
+              width={32}
+              height={32}
+            />
+          </Link>
+          <Link href='/compose/tweet'>
+            <Create
+              className={styles.navLink}
+              stroke='#09f'
+              width={32}
+              height={32}
+            />
+          </Link>
+        </nav>
       </AppLayout>
     </div>
   )

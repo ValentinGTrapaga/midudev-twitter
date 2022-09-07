@@ -3,11 +3,12 @@
     place-items: center;
     height: 100vh;
     width: 100%;
-    position: static;
+    position: relative;
     border-radius: 2px;
 }
 
 .headerDiv {
+    color: #0077c7;
     border-bottom: 1px solid #ccc;
     border-top-left-radius: inherit;
     border-top-right-radius: inherit;
@@ -19,16 +20,34 @@
     padding-left: 15px;
     padding-top: 4px;
     position: sticky;
-    background-color: #ffffffcc;
-    backdrop-filter: blur(5px);
+    background-color: #ffffffaa;
+    backdrop-filter: blur(10px);
+    z-index: 1;
+}
+
+.devitsDiv {
+    height: 100%;
 }
 
 .navDiv {
     border-top: 1px solid #ccc;
     height: 49px;
-    position: sticky;
+    position: fixed;
     bottom: 0;
+    width: 100%;
     background-color: #ffffff;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    border-bottom-left-radius: inherit;
+    border-bottom-right-radius: inherit;
+}
+
+.navLink:hover {
+    background: radial-gradient(#0099ff20 15%, transparent 16%);
+    background-size: 150px 150px;
+    background-position: center;
 }
 
 @media (min-width: 520px) {
@@ -38,16 +57,13 @@
         height: 100vh;
         width: 520px;
         border-radius: 10px;
-        position: relative;
         width: 100vw;
     }
 
     .navDiv {
-        /* TO DO */
-        border-top: 1px solid #ccc;
-        height: 49px;
-        position: sticky;
-        bottom: 0;
-        background-color: #ffffff;
+        position: fixed;
+        width: 520px;
+        top: 90.1vh;
+        padding: 5px;
     }
 }

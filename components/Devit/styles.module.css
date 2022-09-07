@@ -2,6 +2,7 @@
     padding-top: 56px;
     display: flex;
     flex-direction: column;
+    height: auto;
 }
 
 .devitArticle {
@@ -12,6 +13,8 @@
 
 .devitArticle:last-child {
     border-bottom: none;
+    padding-bottom: 59px;
+    /* 59 = navbar height + devits padding */
 }
 
 .avatarDiv {
