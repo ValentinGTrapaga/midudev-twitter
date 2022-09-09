@@ -16,6 +16,13 @@ import {
   query
 } from 'firebase/firestore'
 
+import {
+  getStorage,
+  ref,
+  uploadBytesResumable,
+  getDownloadURL
+} from 'firebase/storage'
+
 const firebaseConfig = {
   apiKey: 'AIzaSyAzvm6SFgHubqazmhP_RisqI_2tOmzJTBs',
   authDomain: 'jedweet-d4285.firebaseapp.com',
@@ -88,4 +95,11 @@ export const fetchLatestDevits = async () => {
       createdAt: +createdAt.toDate()
     }
   })
+}
+
+export const uploadImage = (file) => {
+  const storage = getStorage()
+  const storageRef = ref(storage, `images/${file.name}`)
+  const task = uploadBytesResumable(storageRef, file)
+  return task
 }
